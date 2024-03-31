@@ -480,7 +480,7 @@ def page2():
         st.table(df)
 
     elif selected_option == option5:
-        query = "SELECT v.video_name, c.channel_name, v.like_count FROM video v INNER JOIN channel c ON v.channel_id = c.channel_id ORDER BY v.like_count DESC LIMIT 10"
+        query = "SELECT v.video_name, c.channel_name, v.like_count FROM video v INNER JOIN channel c ON v.channel_id = c.channel_id ORDER BY CAST(v.like_count as unsigned)  DESC LIMIT 10"
         df = pd.read_sql_query(query, con=engine)
         st.table(df)
 
